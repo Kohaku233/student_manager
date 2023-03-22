@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.StudentMapper">
+    <resultMap id="StudentResultMap" type="com.example.demo.model.Student">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="student_id" property="studentId"/>
+        <result column="grade" property="grade"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="StudentResultMap">
+        SELECT *
+        FROM students
+    </select>
+
+    <insert id="insert" parameterType="com.example.demo.model.Student">
+        INSERT INTO students (name, student_id, grade)
+        VALUES (#{name}, #{studentId}, #{grade})
+    </insert>
+
+    <select id="findByStudentId" resultMap="StudentResultMap">
+        SELECT *
+        FROM students
+        WHERE student_id = #{studentId}
+    </select>
+
+    <update id="updateStudentGrade" parameterType="com.example.demo.model.Student">
+        UPDATE students
+        SET grade = #{grade}
+        WHERE student_id = #{studentId}
+    </update>
+
+    <delete id="deleteByStudentId" parameterType="string">
+        DELETE
+        FROM students
+        WHERE student_id = #{studentId}
+    </delete>
+</mapper>
