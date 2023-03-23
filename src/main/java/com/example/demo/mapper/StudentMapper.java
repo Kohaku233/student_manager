@@ -1,6 +1,6 @@
 package com.example.demo.mapper;
 
-import com.example.demo.model.Student;
+import com.example.demo.domain.Student;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.StudentMapper">
-    <resultMap id="StudentResultMap" type="com.example.demo.model.Student">
+    <resultMap id="StudentResultMap" type="com.example.demo.domain.Student">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="student_id" property="studentId"/>
@@ -16,7 +16,7 @@
         FROM students
     </select>
 
-    <insert id="insert" parameterType="com.example.demo.model.Student">
+    <insert id="insert" parameterType="com.example.demo.domain.Student">
         INSERT INTO students (name, student_id, grade)
         VALUES (#{name}, #{studentId}, #{grade})
     </insert>
@@ -27,7 +27,7 @@
         WHERE student_id = #{studentId}
     </select>
 
-    <update id="updateStudentGrade" parameterType="com.example.demo.model.Student">
+    <update id="updateStudentGrade" parameterType="com.example.demo.domain.Student">
         UPDATE students
         SET grade = #{grade}
         WHERE student_id = #{studentId}

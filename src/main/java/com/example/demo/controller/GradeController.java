@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.ApiResponse;
-import com.example.demo.model.Student;
+import com.example.demo.domain.Student;
+import com.example.demo.exception.ApiResponse;
 import com.example.demo.service.GradeManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,11 +29,8 @@ public class GradeController {
     @GetMapping("/get")
     public ApiResponse getStudent(@RequestParam String studentId) {
         Student student = gradeManager.findStudent(studentId);
-        if (student != null) {
-            return new ApiResponse("success", student);
-        } else {
-            return new ApiResponse("fail", "Student not found");
-        }
+        return new ApiResponse("success", student);
+
     }
 
     @PostMapping("/update")
